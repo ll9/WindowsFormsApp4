@@ -44,10 +44,15 @@ namespace WindowsFormsApp4.Repositories
             {
                 tableSchema.IsDeleted = true;
                 tableSchema.SyncStatus = false;
+
+                foreach (var entity in _efContext.DynamicEntities.Where(d => d.ProjectTableId == tableSchema.ProjectTableId))
+                {
+                    var property = typeof(DynamicEntity).GetProperties().Single(p => p.Name == tableSchema.ColumnName);
+                    property.SetValue(entity, null);
+                }
             }
 
             _efContext.SaveChanges();
-            // TODO: Reset Columns In Dynamic Entity
         }
     }
 }
