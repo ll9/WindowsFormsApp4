@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -28,7 +29,11 @@ namespace WindowsFormsApp4.Repositories
 
         public void Edit(TableSchema tableSchema)
         {
-            _efContext.TableSchemas.Update(tableSchema);
+            bool isDetached = _efContext.Entry(tableSchema).State == EntityState.Detached;
+            if (isDetached)
+                _efContext.TableSchemas.Attach(tableSchema);
+
+            _efContext.SaveChanges();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace SyncTests.Repositories.Utils
         private ApplicationDbContext _efContext;
         private TableSchemaRepository _tableSchemaRepository;
         private ProjectTableRepository _projectTableRepository;
+        private ProjectTable _someProjectTable;
 
         [SetUp]
         public void Setup()
@@ -28,8 +29,8 @@ namespace SyncTests.Repositories.Utils
             _tableSchemaRepository = new TableSchemaRepository(_context, _efContext);
             _projectTableRepository = new ProjectTableRepository(_context);
 
-            var someProjectTable = new ProjectTable("SomeName", null);
-            _projectTableRepository.Add(someProjectTable);
+            _someProjectTable = new ProjectTable("SomeName", null) { Id = Guid.NewGuid().ToString() };
+            _projectTableRepository.Add(_someProjectTable);
         }
 
         [Test]
@@ -38,6 +39,14 @@ namespace SyncTests.Repositories.Utils
             var count = _tableSchemaRepository.List().Count();
 
             Assert.That(count, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void Edit_WhenCalled_Edits()
+        {
+            var schema = _tableSchemaRepository.List().First();
+            schema.IsActive = !schema.IsActive;
+            _tableSchemaRepository.Edit(schema);
         }
     }
 }

@@ -104,7 +104,7 @@ VALUES(
             using (var command = new SQLiteCommand(query, connection))
                 foreach (var name in DynamicEntity.GetPropertNames())
                 {
-                    command.Parameters.AddWithValue("@Id", Guid.NewGuid());
+                    command.Parameters.AddWithValue("@Id", Guid.NewGuid().ToString());
                     command.Parameters.AddWithValue("@ColumnName", name);
                     command.Parameters.AddWithValue("@IsActive", false);
                     command.Parameters.AddWithValue("@IsComboBox", false);
