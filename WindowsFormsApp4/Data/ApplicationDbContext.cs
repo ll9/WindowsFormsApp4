@@ -10,7 +10,7 @@ namespace WindowsFormsApp4.Data
 {
     class ApplicationDbContext: DbContext
     {
-        public DbSet<BaseEntity> BaseEntities { get; set; }
+        public DbSet<DynamicEntity> BaseEntities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

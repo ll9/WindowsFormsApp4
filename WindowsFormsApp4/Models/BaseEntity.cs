@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class BaseEntity
+    class DynamicEntity
     {
-        public BaseEntity()
+        public DynamicEntity()
         {
 
-        }
-
-        public BaseEntity(string property1, string property2)
-        {
-            Property1 = property1;
-            Property2 = property2;
         }
 
         public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -24,7 +18,10 @@ namespace WindowsFormsApp4.Models
         public bool IsDeleted { get; set; } = false;
         public DateTime? LastModified { get; set; }
 
-        public string Property1 { get; set; }
-        public string Property2 { get; set; }
+        public string StringCol1 { get; set; }
+        public string StringCol2 { get; set; }
+        public int? IntCol1 { get; set; }
+
+        public string ProjectTableId { get; set; }
     }
 }
