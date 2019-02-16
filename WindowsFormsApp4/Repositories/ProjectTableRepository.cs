@@ -9,7 +9,7 @@ using WindowsFormsApp4.Models;
 
 namespace WindowsFormsApp4.Repositories
 {
-    class ProjectTableRepository
+    public class ProjectTableRepository
     {
         private const string TableName = nameof(ApplicationDbContext.ProjectTables);
         private readonly AdoContext _context;

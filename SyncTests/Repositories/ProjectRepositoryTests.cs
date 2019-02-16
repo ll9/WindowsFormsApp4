@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SyncTests.Repositories.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,14 +21,7 @@ namespace SyncTests.Repositories
         [SetUp]
         public void Setup()
         {
-            // TODO: Use relative Paths
-            var dbPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\db.sqlite";
-            var initialPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\initial.sqlite";
-
-            File.Delete(dbPath);
-            File.Copy(initialPath, dbPath);
-
-            _context = new AdoContext($"Data Source={dbPath}");
+            _context = ContextCreator.GetAdoContext();
             _repo = new ProjectRepository(_context);
         }
 
