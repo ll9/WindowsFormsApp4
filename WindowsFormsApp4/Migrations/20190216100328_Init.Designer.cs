@@ -9,7 +9,7 @@ using WindowsFormsApp4.Data;
 namespace WindowsFormsApp4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216095904_Init")]
+    [Migration("20190216100328_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

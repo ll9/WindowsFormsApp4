@@ -178,9 +178,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190216095904_Init.cs" />
-    <Compile Include="Migrations\20190216095904_Init.designer.cs">
-      <DependentUpon>20190216095904_Init.cs</DependentUpon>
+    <Compile Include="Migrations\20190216100328_Init.cs" />
+    <Compile Include="Migrations\20190216100328_Init.designer.cs">
+      <DependentUpon>20190216100328_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\DynamicEntity.cs" />
@@ -201,9 +201,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="db.sqlite">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
