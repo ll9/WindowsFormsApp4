@@ -60,7 +60,22 @@ namespace WindowsFormsApp4.Controllers
         private void AddTable(string tableName)
         {
             var table = _dbTableRepository.List(tableName);
+            table.DefaultView.RowFilter = "IsDeleted is null OR IsDeleted = false";
+            table.RowDeleted += Table_RowDeleted;
             _view.AddGrid(table);
+        }
+
+        private void Table_RowDeleted(object sender, DataRowChangeEventArgs e)
+        {
+            e.Row.RejectChanges();
+            if (e.Row.Table.Columns.Contains("IsDeleted"))
+            {
+                e.Row.SetField("IsDeleted", true);
+            }
+            if (e.Row.Table.Columns.Contains("SyncStatus"))
+            {
+                e.Row.SetField("SyncStatus", false);
+            }
         }
 
         internal void UpdateChangesToDb(DataTable dataTable)
