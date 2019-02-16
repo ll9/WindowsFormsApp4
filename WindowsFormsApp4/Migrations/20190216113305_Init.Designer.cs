@@ -9,7 +9,7 @@ using WindowsFormsApp4.Data;
 namespace WindowsFormsApp4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216100328_Init")]
+    [Migration("20190216113305_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,13 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<string>("Name");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 
@@ -59,9 +65,15 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("ProjectId");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 
@@ -83,11 +95,17 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<bool>("IsComboBox");
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<int?>("Order");
 
                     b.Property<string>("PhysicalColumnName");
 
                     b.Property<string>("ProjectTableId");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 

@@ -12,12 +12,12 @@ namespace WindowsFormsApp4.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    SyncStatus = table.Column<bool>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    LastModified = table.Column<DateTime>(nullable: true),
                     StringCol1 = table.Column<string>(nullable: true),
                     StringCol2 = table.Column<string>(nullable: true),
                     IntCol1 = table.Column<int>(nullable: true),
+                    SyncStatus = table.Column<bool>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: true),
                     ProjectTableId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -30,7 +30,10 @@ namespace WindowsFormsApp4.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    SyncStatus = table.Column<bool>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,6 +46,9 @@ namespace WindowsFormsApp4.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
+                    SyncStatus = table.Column<bool>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: true),
                     ProjectId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -62,6 +68,9 @@ namespace WindowsFormsApp4.Migrations
                     DisplayName = table.Column<string>(nullable: true),
                     Order = table.Column<int>(nullable: true),
                     PhysicalColumnName = table.Column<string>(nullable: true),
+                    SyncStatus = table.Column<bool>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    LastModified = table.Column<DateTime>(nullable: true),
                     ProjectTableId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

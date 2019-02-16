@@ -45,7 +45,13 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<string>("Name");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 
@@ -57,9 +63,15 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<string>("Name");
 
                     b.Property<string>("ProjectId");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 
@@ -81,11 +93,17 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<bool>("IsComboBox");
 
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModified");
+
                     b.Property<int?>("Order");
 
                     b.Property<string>("PhysicalColumnName");
 
                     b.Property<string>("ProjectTableId");
+
+                    b.Property<bool>("SyncStatus");
 
                     b.HasKey("Id");
 

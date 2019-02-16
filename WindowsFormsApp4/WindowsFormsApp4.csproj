@@ -178,9 +178,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190216100328_Init.cs" />
-    <Compile Include="Migrations\20190216100328_Init.designer.cs">
-      <DependentUpon>20190216100328_Init.cs</DependentUpon>
+    <Compile Include="Migrations\20190216113305_Init.cs" />
+    <Compile Include="Migrations\20190216113305_Init.designer.cs">
+      <DependentUpon>20190216113305_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\DynamicEntity.cs" />
