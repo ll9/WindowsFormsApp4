@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class Project: SyncEntity
+    class Project
     {
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
+
+        bool SyncStatus { get; set; } = true;
+        bool IsDeleted { get; set; } = false;
+        DateTime? LastModified { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class TableSchema: SyncEntity
+    class TableSchema
     {
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -20,6 +20,10 @@ namespace WindowsFormsApp4.Models
         public string DisplayName { get; set; }
         public int? Order { get; set; }
         public string PhysicalColumnName { get; set; }
+
+        bool SyncStatus { get; set; } = true;
+        bool IsDeleted { get; set; } = false;
+        DateTime? LastModified { get; set; }
 
         [ForeignKey(nameof(ProjectTable))]
         public string ProjectTableId { get; set; }

@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class ProjectTable: SyncEntity
+    class ProjectTable
     {
         [Key]
-        string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
+
+        bool SyncStatus { get; set; } = true;
+        bool IsDeleted { get; set; } = false;
+        DateTime? LastModified { get; set; }
 
         [ForeignKey(nameof(Project))]
         public string ProjectId { get; set; }
