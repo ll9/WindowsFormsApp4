@@ -27,5 +27,20 @@ namespace WindowsFormsApp4.Models
 
         [ForeignKey(nameof(ProjectTable))]
         public string ProjectTableId { get; set; }
+
+        public static IEnumerable<string> GetPropertNames()
+        {
+            var propertyList = typeof(DynamicEntity).GetProperties()
+                .Select(p => p.Name)
+                .Where(name => (
+                    name != nameof(Id) &&
+                    name != nameof(SyncStatus) &&
+                    name != nameof(IsDeleted) &&
+                    name != nameof(LastModified) &&
+                    name != nameof(ProjectTableId)
+                ));
+
+            return propertyList;
+        }
     }
 }

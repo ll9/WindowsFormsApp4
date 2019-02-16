@@ -41,9 +41,11 @@ VALUES(
 
                 command.ExecuteNonQuery();
             }
+
+            CreateDefaultTableSchema(projectTable.Id);
         }
 
-        public void CreateDefaultTableSchema()
+        public void CreateDefaultTableSchema(string projectTableId)
         {
             var query = $@"
 INSERT INTO {nameof(ApplicationDbContext.TableSchemas)}
@@ -58,22 +60,23 @@ VALUES(
 ";
             using (var connection = _context.GetConnection())
             using (var command = new SQLiteCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@Id", tableSchema.Id);
-                command.Parameters.AddWithValue("@ColumnName", tableSchema.ColumnName);
-                command.Parameters.AddWithValue("@IsActive", tableSchema.IsActive);
-                command.Parameters.AddWithValue("@IsComboBox", tableSchema.IsComboBox);
-                command.Parameters.AddWithValue("@ComboBoxValues", tableSchema.ComboBoxValues);
-                command.Parameters.AddWithValue("@DisplayName", tableSchema.DisplayName);
-                command.Parameters.AddWithValue("@Order", tableSchema.Order);
-                command.Parameters.AddWithValue("@PhysicalColumnName", tableSchema.PhysicalColumnName);
-                command.Parameters.AddWithValue("@SyncStatus", tableSchema.SyncStatus);
-                command.Parameters.AddWithValue("@IsDeleted", tableSchema.IsDeleted);
-                command.Parameters.AddWithValue("@LastModified", tableSchema.LastModified);
-                command.Parameters.AddWithValue("@ProjectTableId", tableSchema.ProjectTableId);
+                foreach (var name in DynamicEntity.GetPropertNames())
+                {
+                    command.Parameters.AddWithValue("@Id", Guid.NewGuid());
+                    command.Parameters.AddWithValue("@ColumnName", name);
+                    command.Parameters.AddWithValue("@IsActive", false);
+                    command.Parameters.AddWithValue("@IsComboBox", false);
+                    command.Parameters.AddWithValue("@ComboBoxValues", null);
+                    command.Parameters.AddWithValue("@DisplayName", name);
+                    command.Parameters.AddWithValue("@Order", null);
+                    command.Parameters.AddWithValue("@PhysicalColumnName", name);
+                    command.Parameters.AddWithValue("@SyncStatus", false);
+                    command.Parameters.AddWithValue("@IsDeleted", false);
+                    command.Parameters.AddWithValue("@LastModified", null);
+                    command.Parameters.AddWithValue("@ProjectTableId", projectTableId);
 
-                command.ExecuteNonQuery();
-            }
+                    command.ExecuteNonQuery();
+                }
         }
     }
 }
