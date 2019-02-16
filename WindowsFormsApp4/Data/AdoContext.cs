@@ -51,7 +51,7 @@ namespace WindowsFormsApp4.Data
             using (var connection = GetConnection())
             using (var command = new SQLiteCommand(query, connection))
             {
-                return reader = command.ExecuteReader();
+                return command.ExecuteReader();
             }
         }
     }

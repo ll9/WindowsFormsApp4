@@ -15,6 +15,12 @@ namespace WindowsFormsApp4.Models
 
         }
 
+        public ProjectTable(string name, string projectId)
+        {
+            Name = name;
+            ProjectId = projectId;
+        }
+
         public ProjectTable(string id, string name, bool syncStatus, bool isDeleted, DateTime? lastModified, string projectId)
         {
             Id = id;
