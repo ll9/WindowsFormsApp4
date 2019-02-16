@@ -8,6 +8,11 @@ namespace WindowsFormsApp4.Models
 {
     class BaseEntity
     {
+        public BaseEntity()
+        {
+
+        }
+
         public BaseEntity(string property1, string property2)
         {
             Property1 = property1;
