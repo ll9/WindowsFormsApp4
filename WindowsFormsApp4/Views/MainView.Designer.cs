@@ -48,15 +48,16 @@
             this.AddTableButton.TabIndex = 1;
             this.AddTableButton.Text = "Add Table";
             this.AddTableButton.UseVisualStyleBackColor = true;
+            this.AddTableButton.Click += new System.EventHandler(this.AddTableButton_Click);
             // 
-            // Form1
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.AddTableButton);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "MainView";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
