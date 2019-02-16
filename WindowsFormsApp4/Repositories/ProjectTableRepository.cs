@@ -19,6 +19,29 @@ namespace WindowsFormsApp4.Repositories
             _context = context;
         }
 
+        public IEnumerable<ProjectTable> List()
+        {
+            var projectTables = new List<ProjectTable>();
+            var query = $@"
+SELECT Id, Name, SyncStatus, IsDeleted, LastModified, ProjectId FROM {TableName}
+";
+            using (var reader = _context.ExecuteReader(query))
+            {
+                while (reader.Read())
+                {
+                    var projectTable = new ProjectTable(
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetBoolean(2),
+                        reader.GetBoolean(3),
+                        reader.GetDateTime(4),
+                        reader.GetString(5));
+                    projectTables.Add(projectTable);
+                }
+            }
+            return projectTables;
+        }
+
         public void Add(ProjectTable projectTable)
         {
             var query = $@"

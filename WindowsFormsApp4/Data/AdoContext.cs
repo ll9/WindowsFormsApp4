@@ -45,5 +45,14 @@ namespace WindowsFormsApp4.Data
                 return command.ExecuteScalar();
             }
         }
+
+        public SQLiteDataReader ExecuteReader(string query)
+        {
+            using (var connection = GetConnection())
+            using (var command = new SQLiteCommand(query, connection))
+            {
+                return reader = command.ExecuteReader();
+            }
+        }
     }
 }

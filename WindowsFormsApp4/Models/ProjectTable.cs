@@ -10,6 +10,21 @@ namespace WindowsFormsApp4.Models
 {
     public class ProjectTable
     {
+        public ProjectTable()
+        {
+
+        }
+
+        public ProjectTable(string id, string name, bool syncStatus, bool isDeleted, DateTime? lastModified, string projectId)
+        {
+            Id = id;
+            Name = name;
+            SyncStatus = syncStatus;
+            IsDeleted = isDeleted;
+            LastModified = lastModified;
+            ProjectId = projectId;
+        }
+
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
