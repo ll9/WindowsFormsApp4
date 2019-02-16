@@ -70,6 +70,23 @@ VALUES(
             CreateDefaultTableSchema(projectTable.Id);
         }
 
+        public void Remove(string Id)
+        {
+            // TODO: Enable Foreign Key Constraints
+            var query = $@"
+DELETE FROM {TableName}
+WHERE Id=@Id
+";
+            using (var connection = _context.GetConnection())
+            using (var command = new SQLiteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Id", Id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
         public void CreateDefaultTableSchema(string projectTableId)
         {
             var query = $@"
