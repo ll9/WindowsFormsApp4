@@ -19,7 +19,7 @@ namespace WindowsFormsApp4
         {
             InitializeComponent();
             _context = new ApplicationDbContext();
-            var list = _context.BaseEntities.Local.ToBindingList();
+            var list = _context.DynamicEntities.Local.ToBindingList();
             dataGridView1.DataSource = list;
             list.AddingNew += List_AddingNew;
             list.ListChanged += List_ListChanged;
