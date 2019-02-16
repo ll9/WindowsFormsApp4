@@ -14,9 +14,9 @@ namespace WindowsFormsApp4.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
 
-        bool SyncStatus { get; set; } = true;
-        bool IsDeleted { get; set; } = false;
-        DateTime? LastModified { get; set; }
+        public bool SyncStatus { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
+        public DateTime? LastModified { get; set; }
 
         [ForeignKey(nameof(Project))]
         public string ProjectId { get; set; }
