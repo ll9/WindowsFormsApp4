@@ -9,7 +9,7 @@ using WindowsFormsApp4.Models;
 
 namespace WindowsFormsApp4.Repositories
 {
-    class TableSchemaRepository
+    public class TableSchemaRepository
     {
         private const string TableName = nameof(ApplicationDbContext.TableSchemas);
         private readonly AdoContext _context;

@@ -86,6 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ProjectRepositoryTests.cs" />
     <Compile Include="Repositories\ProjectTableRepositoryTests.cs" />
+    <Compile Include="Repositories\TableSchemaRepositoryTests.cs" />
     <Compile Include="Repositories\Utils\ContextCreator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsFormsApp4\WindowsFormsApp4.csproj">
-      <Project>{0b232eb0-36cf-4b0e-889a-c30716a52304}</Project>
+      <Project>{0B232EB0-36CF-4B0E-889A-C30716A52304}</Project>
       <Name>WindowsFormsApp4</Name>
     </ProjectReference>
   </ItemGroup>
