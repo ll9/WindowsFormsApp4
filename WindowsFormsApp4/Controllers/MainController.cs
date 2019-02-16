@@ -43,20 +43,23 @@ namespace WindowsFormsApp4.Controllers
 
             foreach (var localTable in _efContext.LocalTables.ToList())
             {
-                var table = _dbTableRepository.List(localTable.Name);
-                _view.AddGrid(table);
+                AddTable(localTable.Name);
             }
         }
 
-        internal void AddTable(AddTableViewModel addTableViewModel)
+        internal void CreateTable(AddTableViewModel addTableViewModel)
         {
             var projectId = _projectRepository.GetLocalProjectId();
 
             _dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
             _efContext.LocalTables.Add(new LocalTable(addTableViewModel.Name));
             _efContext.SaveChanges();
+            AddTable(addTableViewModel.Name);
+        }
 
-            var table = _dbTableRepository.List(addTableViewModel.Name);
+        private void AddTable(string tableName)
+        {
+            var table = _dbTableRepository.List(tableName);
             _view.AddGrid(table);
         }
 
