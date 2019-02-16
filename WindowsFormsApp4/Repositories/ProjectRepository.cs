@@ -39,6 +39,18 @@ VALUES(@Id, @Name, @SyncStatus, @IsDeleted, @LastModified)
             }
         }
 
+        public string GetLocalProjectId()
+        {
+            var query = $"SELECT Id FROM {TableName}";
+            var id = _context.ExecuteScalar(query) as string;
+
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new Exception("Content has not been initialized yet");
+            }
+            return id;
+        }
+
         public bool ProjectExists()
         {
             var query = $"SELECT COUNT(*) FROM {TableName}";

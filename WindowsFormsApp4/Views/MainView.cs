@@ -28,7 +28,7 @@ namespace WindowsFormsApp4
             var dialog = new AddTableDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                //_controller.AddTable(dialog.AddTableViewModel);
+                _controller.AddTable(dialog.AddTableViewModel);
             }
         }
     }

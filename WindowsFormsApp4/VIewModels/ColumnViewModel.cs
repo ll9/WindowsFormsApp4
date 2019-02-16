@@ -12,8 +12,8 @@ namespace WindowsFormsApp4.ViewModels
     {
         private string _name;
         public string Name { get => _name; set => SetField(ref _name, value); }
-        private string _dataType;
-        public string DataType { get => _dataType; set => SetField(ref _dataType, value); }
+        private string _sqlType;
+        public string SqlType { get => _sqlType; set => SetField(ref _sqlType, value); }
 
         public bool IsValid { get => !string.IsNullOrEmpty(Name); }
 
