@@ -12,7 +12,7 @@ namespace WindowsFormsApp4.Data
     {
         private readonly string _connectionString;
 
-        public ApplicationDbContext(string connectionString = "Data Source=db.sqlite")
+        public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
         }

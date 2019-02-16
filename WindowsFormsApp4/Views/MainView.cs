@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp4.Controllers;
 using WindowsFormsApp4.Data;
 
 namespace WindowsFormsApp4
 {
-    public partial class Form1 : Form
+    public partial class MainView : Form
     {
-        private ApplicationDbContext _context;
+        private MainController _controller;
 
-        public Form1()
+        public MainView()
         {
             InitializeComponent();
+            _controller = new MainController(this);
         }
     }
 }

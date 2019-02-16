@@ -53,7 +53,7 @@ VALUES(@Id, @Name, @SyncStatus, @IsDeleted, @LastModified)
                 var project = new Project
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Name = Path.GetFileName(AppDomain.CurrentDomain.BaseDirectory)
+                    Name = AppDomain.CurrentDomain.BaseDirectory
                 };
                 Add(project);
             }

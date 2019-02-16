@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp4
 {
-    partial class Form1
+    partial class MainView
     {
         /// <summary>
         /// Erforderliche Designervariable.

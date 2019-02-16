@@ -11,13 +11,10 @@ namespace WindowsFormsApp4.Data
     {
         private string _connectionString;
 
-        public AdoContext(string connectionString = null)
+        public AdoContext(string connectionString)
         {
-            var builder = new SQLiteConnectionStringBuilder
-            {
-                DataSource = "db.sqlite",
-            };
-            _connectionString = connectionString ?? builder.ConnectionString;
+            
+            _connectionString = connectionString;
         }
 
         public SQLiteConnection GetConnection()
