@@ -31,5 +31,19 @@ namespace WindowsFormsApp4
                 _controller.AddTable(dialog.AddTableViewModel);
             }
         }
+
+        internal void AddGrid(DataTable dataTable)
+        {
+            var tab = new TabPage(dataTable.TableName);
+            var dataGrid = new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                DataSource = dataTable
+            };
+            //dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
+
+            tab.Controls.Add(dataGrid);
+            GridTabControl.TabPages.Add(tab);
+        }
     }
 }

@@ -38,14 +38,13 @@ namespace WindowsFormsApp4.Controllers
         internal void AddTable(AddTableViewModel addTableViewModel)
         {
             var projectId = _projectRepository.GetLocalProjectId();
-            var table = new ProjectTable(addTableViewModel.Name, projectId);
 
-            //_dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
-            //_efContext.SDDataTables.Add(sdTable);
-            //_efContext.SaveChanges();
+            _dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
+            _efContext.LocalTables.Add(new LocalTable(addTableViewModel.Name));
+            _efContext.SaveChanges();
 
-            //var table = _dbTableRepository.List(sdTable);
-            //_view.AddGrid(table);
+            var table = _dbTableRepository.List(addTableViewModel.Name);
+            _view.AddGrid(table);
         }
 
         private void Initialize()

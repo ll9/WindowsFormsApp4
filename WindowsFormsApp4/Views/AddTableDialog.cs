@@ -21,20 +21,20 @@ namespace WindowsFormsApp4.Views
 
             var items = new[]
             {
-                new { Text = "Text", Value = "Text" },
+                new { Text = "Text", Value = "TEXT" },
                 new { Text = "Zahl", Value = "DOUBLE" },
                 new { Text = "Datum", Value = "DATETIME" },
             };
-            dataTypeDataGridViewTextBoxColumn.DataSource = items;
-            dataTypeDataGridViewTextBoxColumn.DisplayMember = "Text";
-            dataTypeDataGridViewTextBoxColumn.ValueMember = "Value";
+            SqlCombobox.DataSource = items;
+            SqlCombobox.DisplayMember = "Text";
+            SqlCombobox.ValueMember = "Value";
 
             addTableViewModelBindingSource.DataSource = AddTableViewModel;
         }
 
         private void columnViewModelsDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells[nameof(dataTypeDataGridViewTextBoxColumn)].Value = typeof(string).ToString();
+            e.Row.Cells[nameof(ColumnViewModel.SqlType)].Value = "TEXT";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
