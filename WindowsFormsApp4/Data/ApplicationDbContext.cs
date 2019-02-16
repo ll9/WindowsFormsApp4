@@ -8,7 +8,7 @@ using WindowsFormsApp4.Models;
 
 namespace WindowsFormsApp4.Data
 {
-    class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: DbContext
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectTable> ProjectTables { get; set; }

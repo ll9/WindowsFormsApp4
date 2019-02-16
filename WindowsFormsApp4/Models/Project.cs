@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class Project
+    public class Project
     {
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();

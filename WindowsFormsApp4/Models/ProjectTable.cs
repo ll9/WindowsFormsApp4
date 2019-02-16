@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class ProjectTable
+    public class ProjectTable
     {
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();

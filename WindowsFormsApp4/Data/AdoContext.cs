@@ -7,15 +7,23 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Data
 {
-    class AdoContext
+    public class AdoContext
     {
-        public SQLiteConnection GetConnection()
+        private string _connectionString;
+
+        public AdoContext(string connectionString = null)
         {
             var builder = new SQLiteConnectionStringBuilder
             {
                 DataSource = "db.sqlite",
             };
-            var connection = new SQLiteConnection(builder.ConnectionString);
+            _connectionString = connectionString ?? builder.ConnectionString;
+        }
+
+        public SQLiteConnection GetConnection()
+        {
+            
+            var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             return connection;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.Models
 {
-    class DynamicEntity
+    public class DynamicEntity
     {
         public DynamicEntity()
         {
