@@ -40,10 +40,23 @@ namespace WindowsFormsApp4
                 Dock = DockStyle.Fill,
                 DataSource = dataTable
             };
+            dataGrid.DefaultValuesNeeded += DataGrid_DefaultValuesNeeded;
             //dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
 
             tab.Controls.Add(dataGrid);
             GridTabControl.TabPages.Add(tab);
+        }
+
+        private void DataGrid_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            var hasIdColumn = e.Row.DataGridView.Columns.Contains("Id");
+            if (hasIdColumn)
+            {
+                if (e.Row.DataGridView.Columns["Id"].ValueType == typeof(string))
+                {
+                    e.Row.Cells["Id"].Value = Guid.NewGuid().ToString();
+                }
+            }
         }
     }
 }
