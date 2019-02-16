@@ -66,7 +66,7 @@ namespace WindowsFormsApp4.Migrations
                     IsComboBox = table.Column<bool>(nullable: false),
                     ComboBoxValues = table.Column<string>(nullable: true),
                     DisplayName = table.Column<string>(nullable: true),
-                    Order = table.Column<int>(nullable: true),
+                    DisplayIndex = table.Column<int>(nullable: true),
                     PhysicalColumnName = table.Column<string>(nullable: true),
                     SyncStatus = table.Column<bool>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),

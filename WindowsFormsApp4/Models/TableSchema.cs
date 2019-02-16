@@ -18,7 +18,7 @@ namespace WindowsFormsApp4.Models
         public string ComboBoxValues { get; set; }
 
         public string DisplayName { get; set; }
-        public int? Order { get; set; }
+        public int? DisplayIndex { get; set; }
         public string PhysicalColumnName { get; set; }
 
         public bool SyncStatus { get; set; } = true;

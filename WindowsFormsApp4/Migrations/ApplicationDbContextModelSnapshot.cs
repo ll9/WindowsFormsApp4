@@ -87,6 +87,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("ComboBoxValues");
 
+                    b.Property<int?>("DisplayIndex");
+
                     b.Property<string>("DisplayName");
 
                     b.Property<bool>("IsActive");
@@ -96,8 +98,6 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("LastModified");
-
-                    b.Property<int?>("Order");
 
                     b.Property<string>("PhysicalColumnName");
 

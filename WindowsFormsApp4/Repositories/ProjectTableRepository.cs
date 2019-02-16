@@ -73,11 +73,11 @@ VALUES(
             var query = $@"
 INSERT INTO {nameof(ApplicationDbContext.TableSchemas)}
 (
-Id, ColumnName, IsActive, IsComboBox, ComboBoxValues, DisplayName, Order, 
+Id, ColumnName, IsActive, IsComboBox, ComboBoxValues, DisplayName, DisplayIndex, 
 PhysicalColumnName, SyncStatus, IsDeleted, LastModified, ProjectTableId
 )
 VALUES(
-@Id, @ColumnName, @IsActive, @IsComboBox, @ComboBoxValues, @DisplayName, @Order, 
+@Id, @ColumnName, @IsActive, @IsComboBox, @ComboBoxValues, @DisplayName, @DisplayIndex, 
 @PhysicalColumnName, @SyncStatus, @IsDeleted, @LastModified, @ProjectTableId
 )
 ";
@@ -91,7 +91,7 @@ VALUES(
                     command.Parameters.AddWithValue("@IsComboBox", false);
                     command.Parameters.AddWithValue("@ComboBoxValues", null);
                     command.Parameters.AddWithValue("@DisplayName", name);
-                    command.Parameters.AddWithValue("@Order", null);
+                    command.Parameters.AddWithValue("@DisplayIndex", null);
                     command.Parameters.AddWithValue("@PhysicalColumnName", name);
                     command.Parameters.AddWithValue("@SyncStatus", false);
                     command.Parameters.AddWithValue("@IsDeleted", false);

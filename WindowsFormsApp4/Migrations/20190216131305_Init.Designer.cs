@@ -9,7 +9,7 @@ using WindowsFormsApp4.Data;
 namespace WindowsFormsApp4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216113305_Init")]
+    [Migration("20190216131305_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("ComboBoxValues");
 
+                    b.Property<int?>("DisplayIndex");
+
                     b.Property<string>("DisplayName");
 
                     b.Property<bool>("IsActive");
@@ -98,8 +100,6 @@ namespace WindowsFormsApp4.Migrations
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("LastModified");
-
-                    b.Property<int?>("Order");
 
                     b.Property<string>("PhysicalColumnName");
 
