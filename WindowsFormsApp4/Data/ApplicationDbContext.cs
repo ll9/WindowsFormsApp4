@@ -12,6 +12,11 @@ namespace WindowsFormsApp4.Data
     {
         private readonly string _connectionString;
 
+        public ApplicationDbContext()
+        {
+            _connectionString = "Data Source=db.sqlite";
+        }
+
         public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
@@ -21,6 +26,7 @@ namespace WindowsFormsApp4.Data
         public DbSet<ProjectTable> ProjectTables { get; set; }
         public DbSet<DynamicEntity> DynamicEntities { get; set; }
         public DbSet<TableSchema> TableSchemas { get; set; }
+        public DbSet<LocalTable> LocalTables { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

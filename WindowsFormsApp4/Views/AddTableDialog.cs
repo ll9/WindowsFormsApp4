@@ -21,9 +21,9 @@ namespace WindowsFormsApp4.Views
 
             var items = new[]
             {
-                new { Text = "Text", Value = typeof(string).ToString() },
-                new { Text = "Zahl", Value = typeof(double).ToString() },
-                new { Text = "Datum", Value = typeof(DateTime).ToString() },
+                new { Text = "Text", Value = "Text" },
+                new { Text = "Zahl", Value = "DOUBLE" },
+                new { Text = "Datum", Value = "DATETIME" },
             };
             dataTypeDataGridViewTextBoxColumn.DataSource = items;
             dataTypeDataGridViewTextBoxColumn.DisplayMember = "Text";

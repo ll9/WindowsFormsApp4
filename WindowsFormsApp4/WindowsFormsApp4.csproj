@@ -173,6 +173,8 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Data\AdoContext.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Models\LocalTable.cs" />
+    <Compile Include="Repositories\DbTableRepository.cs" />
     <Compile Include="VIewModels\AddTableViewModel.cs" />
     <Compile Include="VIewModels\ColumnViewModel.cs" />
     <Compile Include="Views\AddTableDialog.cs">
