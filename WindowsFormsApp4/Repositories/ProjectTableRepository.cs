@@ -25,17 +25,19 @@ namespace WindowsFormsApp4.Repositories
             var query = $@"
 SELECT Id, Name, SyncStatus, IsDeleted, LastModified, ProjectId FROM {TableName}
 ";
-            using (var reader = _context.ExecuteReader(query))
+            using (var connection = _context.GetConnection())
+            using (var command = new SQLiteCommand(query, connection))
+            using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     var projectTable = new ProjectTable(
-                        reader.GetString(0),
-                        reader.GetString(1),
-                        reader.GetBoolean(2),
-                        reader.GetBoolean(3),
-                        reader.GetDateTime(4),
-                        reader.GetString(5));
+                        reader.GetString(0) as string,
+                        reader.GetString(1) as string,
+                        reader.GetBoolean(2) as bool? ?? false,
+                        reader.GetBoolean(3) as bool? ?? false,
+                        reader.GetDateTime(4) as DateTime?,
+                        reader.GetString(5) as string);
                     projectTables.Add(projectTable);
                 }
             }
