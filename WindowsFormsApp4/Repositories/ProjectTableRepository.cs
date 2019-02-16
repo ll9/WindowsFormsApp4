@@ -32,12 +32,12 @@ SELECT Id, Name, SyncStatus, IsDeleted, LastModified, ProjectId FROM {TableName}
                 while (reader.Read())
                 {
                     var projectTable = new ProjectTable(
-                        reader.GetString(0) as string,
-                        reader.GetString(1) as string,
-                        reader.GetBoolean(2) as bool? ?? false,
-                        reader.GetBoolean(3) as bool? ?? false,
-                        reader.GetDateTime(4) as DateTime?,
-                        reader.GetString(5) as string);
+                        reader[0] as string,
+                        reader[1] as string,
+                        reader[2] as bool? ?? false,
+                        reader[3] as bool? ?? false,
+                        reader[4] as DateTime?,
+                        reader[5] as string);
                     projectTables.Add(projectTable);
                 }
             }
