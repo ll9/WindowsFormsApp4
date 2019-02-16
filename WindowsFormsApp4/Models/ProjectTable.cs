@@ -35,7 +35,7 @@ namespace WindowsFormsApp4.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
 
-        public bool SyncStatus { get; set; } = true;
+        public bool SyncStatus { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
         public DateTime? LastModified { get; set; }
 

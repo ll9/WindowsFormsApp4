@@ -21,7 +21,7 @@ namespace WindowsFormsApp4.Models
         public string StringCol2 { get; set; }
         public int? IntCol1 { get; set; }
 
-        public bool SyncStatus { get; set; } = true;
+        public bool SyncStatus { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
         public DateTime? LastModified { get; set; }
 

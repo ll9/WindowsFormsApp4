@@ -21,7 +21,7 @@ namespace WindowsFormsApp4.Models
         public int? DisplayIndex { get; set; }
         public string PhysicalColumnName { get; set; }
 
-        public bool SyncStatus { get; set; } = true;
+        public bool SyncStatus { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
         public DateTime? LastModified { get; set; }
 
