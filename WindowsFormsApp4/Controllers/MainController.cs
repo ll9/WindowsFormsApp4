@@ -35,6 +35,18 @@ namespace WindowsFormsApp4.Controllers
             Initialize();
         }
 
+        private void Initialize()
+        {
+            _efContext.Database.Migrate();
+            _projectRepository.CreateIfNotExists();
+
+            foreach (var localTable in _efContext.LocalTables.ToList())
+            {
+                var table = _dbTableRepository.List(localTable.Name);
+                _view.AddGrid(table);
+            }
+        }
+
         internal void AddTable(AddTableViewModel addTableViewModel)
         {
             var projectId = _projectRepository.GetLocalProjectId();
@@ -45,12 +57,6 @@ namespace WindowsFormsApp4.Controllers
 
             var table = _dbTableRepository.List(addTableViewModel.Name);
             _view.AddGrid(table);
-        }
-
-        private void Initialize()
-        {
-            _efContext.Database.Migrate();
-            _projectRepository.CreateIfNotExists();
         }
     }
 }
