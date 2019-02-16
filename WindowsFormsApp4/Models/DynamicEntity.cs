@@ -17,13 +17,13 @@ namespace WindowsFormsApp4.Models
 
         [Key]
         public string Id { get; set; } = Guid.NewGuid().ToString();
-        public bool SyncStatus { get; set; } = true;
-        public bool IsDeleted { get; set; } = false;
-        public DateTime? LastModified { get; set; }
-
         public string StringCol1 { get; set; }
         public string StringCol2 { get; set; }
         public int? IntCol1 { get; set; }
+
+        public bool SyncStatus { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
+        public DateTime? LastModified { get; set; }
 
         [ForeignKey(nameof(ProjectTable))]
         public string ProjectTableId { get; set; }
