@@ -25,5 +25,10 @@ namespace WindowsFormsApp4.Repositories
         {
             return _efContext.TableSchemas.ToList();
         }
+
+        public void Edit(TableSchema tableSchema)
+        {
+            _efContext.TableSchemas.Update(tableSchema);
+        }
     }
 }
