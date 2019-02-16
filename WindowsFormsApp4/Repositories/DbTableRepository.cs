@@ -57,5 +57,20 @@ namespace WindowsFormsApp4.Repositories
                 return table;
             }
         }
+
+        internal void Update(DataTable dataTable)
+        {
+            var query = $"SELECT * FROM {dataTable.TableName}";
+            using (var connection = _context.GetConnection())
+            using (var adapter = new SQLiteDataAdapter(query, connection))
+            {
+                var builder = new SQLiteCommandBuilder(adapter);
+                adapter.InsertCommand = builder.GetInsertCommand();
+                adapter.UpdateCommand = builder.GetUpdateCommand();
+                adapter.DeleteCommand = builder.GetDeleteCommand();
+
+                adapter.Update(dataTable);
+            }
+        }
     }
 }

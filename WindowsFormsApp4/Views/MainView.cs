@@ -58,5 +58,22 @@ namespace WindowsFormsApp4
                 }
             }
         }
+
+        private void SaveAllButton_Click(object sender, EventArgs e)
+        {
+            foreach (var control in GridTabControl.Controls)
+            {
+                if (control is TabPage tabPage)
+                {
+                    if (tabPage.Controls[0] is DataGridView dataGridView)
+                    {
+                        if (dataGridView.DataSource is DataTable dataTable)
+                        {
+                            _controller.UpdateChangesToDb(dataTable);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,11 @@ namespace WindowsFormsApp4.Controllers
 
             var table = _dbTableRepository.List(addTableViewModel.Name);
             _view.AddGrid(table);
+        }
+
+        internal void UpdateChangesToDb(DataTable dataTable)
+        {
+            _dbTableRepository.Update(dataTable);
         }
     }
 }
