@@ -19,10 +19,35 @@ namespace WindowsFormsApp4.Repositories
             _context = context;
         }
 
-        public void Add(TableSchema tableSchema)
+        public void Add(ProjectTable projectTable)
         {
             var query = $@"
 INSERT INTO {TableName}(
+Id, Name, SyncStatus, IsDeleted, LastModified, ProjectId
+)
+VALUES(
+@Id, @Name, @SyncStatus, @IsDeleted, @LastModified, @ProjectId
+)
+";
+            using (var connection = _context.GetConnection())
+            using (var command = new SQLiteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Id", projectTable.Id);
+                command.Parameters.AddWithValue("@Name", projectTable.Name);
+                command.Parameters.AddWithValue("@SyncStatus", projectTable.SyncStatus);
+                command.Parameters.AddWithValue("@IsDeleted", projectTable.IsDeleted);
+                command.Parameters.AddWithValue("@LastModified", projectTable.LastModified);
+                command.Parameters.AddWithValue("@ProjectId", projectTable.ProjectId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void CreateDefaultTableSchema()
+        {
+            var query = $@"
+INSERT INTO {nameof(ApplicationDbContext.TableSchemas)}
+(
 Id, ColumnName, IsActive, IsComboBox, ComboBoxValues, DisplayName, Order, 
 PhysicalColumnName, SyncStatus, IsDeleted, LastModified, ProjectTableId
 )
