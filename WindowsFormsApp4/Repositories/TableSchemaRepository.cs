@@ -35,5 +35,19 @@ namespace WindowsFormsApp4.Repositories
 
             _efContext.SaveChanges();
         }
+
+        public void Remove(string id)
+        {
+            var tableSchema = _efContext.TableSchemas.SingleOrDefault(t => t.Id == id);
+
+            if (tableSchema != null)
+            {
+                tableSchema.IsDeleted = true;
+                tableSchema.SyncStatus = false;
+            }
+
+            _efContext.SaveChanges();
+            // TODO: Reset Columns In Dynamic Entity
+        }
     }
 }
