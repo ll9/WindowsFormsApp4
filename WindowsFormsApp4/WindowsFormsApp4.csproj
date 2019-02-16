@@ -173,10 +173,11 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Data\AdoContext.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\20190216212314_LocalTable.cs" />
-    <Compile Include="Migrations\20190216212314_LocalTable.designer.cs">
-      <DependentUpon>20190216212314_LocalTable.cs</DependentUpon>
+    <Compile Include="Migrations\20190216214458_NewInit.cs" />
+    <Compile Include="Migrations\20190216214458_NewInit.designer.cs">
+      <DependentUpon>20190216214458_NewInit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\LocalTable.cs" />
     <Compile Include="Repositories\DbTableRepository.cs" />
     <Compile Include="VIewModels\AddTableViewModel.cs" />
@@ -193,11 +194,6 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190216131305_Init.cs" />
-    <Compile Include="Migrations\20190216131305_Init.designer.cs">
-      <DependentUpon>20190216131305_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\DynamicEntity.cs" />
     <Compile Include="Models\ProjectTable.cs" />
     <Compile Include="Models\Project.cs" />
@@ -223,7 +219,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="db.sqlite" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp4.ViewModels.AddTableViewModel.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp4.ViewModels.ColumnViewModel.datasource" />

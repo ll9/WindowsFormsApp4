@@ -32,5 +32,13 @@ namespace WindowsFormsApp4.Data
         {
             optionsBuilder.UseSqlite(_connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
+            modelBuilder.Entity<ProjectTable>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
+            modelBuilder.Entity<DynamicEntity>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
+            modelBuilder.Entity<TableSchema>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
+        }
     }
 }

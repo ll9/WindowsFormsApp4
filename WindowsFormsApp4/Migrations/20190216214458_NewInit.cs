@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WindowsFormsApp4.Migrations
 {
-    public partial class Init : Migration
+    public partial class NewInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace WindowsFormsApp4.Migrations
                 name: "DynamicEntities",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     StringCol1 = table.Column<string>(nullable: true),
                     StringCol2 = table.Column<string>(nullable: true),
                     IntCol1 = table.Column<int>(nullable: true),
@@ -26,10 +26,22 @@ namespace WindowsFormsApp4.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "LocalTables",
+                columns: table => new
+                {
+                    Name = table.Column<string>(nullable: false),
+                    DisplayName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocalTables", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     Name = table.Column<string>(nullable: true),
                     SyncStatus = table.Column<bool>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -44,7 +56,7 @@ namespace WindowsFormsApp4.Migrations
                 name: "ProjectTables",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     Name = table.Column<string>(nullable: true),
                     SyncStatus = table.Column<bool>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -60,7 +72,7 @@ namespace WindowsFormsApp4.Migrations
                 name: "TableSchemas",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     ColumnName = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     IsComboBox = table.Column<bool>(nullable: false),
@@ -83,6 +95,9 @@ namespace WindowsFormsApp4.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DynamicEntities");
+
+            migrationBuilder.DropTable(
+                name: "LocalTables");
 
             migrationBuilder.DropTable(
                 name: "Projects");

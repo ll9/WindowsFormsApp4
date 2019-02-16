@@ -9,8 +9,8 @@ using WindowsFormsApp4.Data;
 namespace WindowsFormsApp4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216212314_LocalTable")]
-    partial class LocalTable
+    [Migration("20190216214458_NewInit")]
+    partial class NewInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.DynamicEntity", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<int?>("IntCol1");
 
@@ -57,7 +58,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.Project", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<bool>("IsDeleted");
 
@@ -75,7 +77,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.ProjectTable", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<bool>("IsDeleted");
 
@@ -95,7 +98,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.TableSchema", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<string>("ColumnName");
 

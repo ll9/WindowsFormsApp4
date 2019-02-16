@@ -19,7 +19,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.DynamicEntity", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<int?>("IntCol1");
 
@@ -55,7 +56,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.Project", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<bool>("IsDeleted");
 
@@ -73,7 +75,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.ProjectTable", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<bool>("IsDeleted");
 
@@ -93,7 +96,8 @@ namespace WindowsFormsApp4.Migrations
             modelBuilder.Entity("WindowsFormsApp4.Models.TableSchema", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("HEX(RANDOMBLOB(16))");
 
                     b.Property<string>("ColumnName");
 
