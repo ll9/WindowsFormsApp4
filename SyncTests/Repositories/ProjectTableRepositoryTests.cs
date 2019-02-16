@@ -20,6 +20,7 @@ namespace SyncTests.Repositories
         [SetUp]
         public void Setup()
         {
+            ContextCreator.ResetDb();
             _context = ContextCreator.GetAdoContext();
             _repo = new ProjectTableRepository(_context);
         }

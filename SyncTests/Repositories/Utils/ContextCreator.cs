@@ -10,16 +10,24 @@ namespace SyncTests.Repositories.Utils
 {
     class ContextCreator
     {
-        public static AdoContext GetAdoContext()
-        {
-            // TODO: Use relative Paths
-            var dbPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\db.sqlite";
-            var initialPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\initial.sqlite";
+        // TODO: Use relative Paths
+        private static readonly string dbPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\db.sqlite";
+        private static readonly string initialPath = @"C:\Users\Lenovo G50-45\source\repos\WindowsFormsApp4\SyncTests\Db\initial.sqlite";
 
+        public static void ResetDb()
+        {
             File.Delete(dbPath);
             File.Copy(initialPath, dbPath);
+        }
 
+        public static AdoContext GetAdoContext()
+        {
             return new AdoContext($"Data Source={dbPath}");
+        }
+
+        public static ApplicationDbContext GetEfContext()
+        {
+            return new ApplicationDbContext($"Data Source={dbPath}");
         }
     }
 }
