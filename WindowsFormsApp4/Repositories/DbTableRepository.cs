@@ -13,7 +13,12 @@ namespace WindowsFormsApp4.Repositories
     class DbTableRepository
     {
         private readonly AdoContext _context;
-        private string[] _defaultColumns = new[] { "Id TEXT DEFAULT (HEX(RANDOMBLOB(16))) PRIMARY KEY" };
+        private string[] _defaultColumns = new[] {
+            "Id TEXT DEFAULT (HEX(RANDOMBLOB(16))) PRIMARY KEY",
+            "SyncStatus BOOLEAN",
+            "IsDeleted BOOLEAN",
+            "LastModified",
+        };
 
         public DbTableRepository(AdoContext context)
         {
