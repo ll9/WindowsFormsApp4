@@ -39,6 +39,23 @@ namespace WindowsFormsApp4.Data
             modelBuilder.Entity<ProjectTable>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
             modelBuilder.Entity<DynamicEntity>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
             modelBuilder.Entity<TableSchema>().Property(p => p.Id).HasDefaultValueSql("HEX(RANDOMBLOB(16))");
+
+            modelBuilder.Entity<Project>().Property(p => p.SyncStatus)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SyncStatus)Enum.Parse(typeof(SyncStatus), v));
+            modelBuilder.Entity<ProjectTable>().Property(p => p.SyncStatus)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SyncStatus)Enum.Parse(typeof(SyncStatus), v));
+            modelBuilder.Entity<DynamicEntity>().Property(p => p.SyncStatus)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SyncStatus)Enum.Parse(typeof(SyncStatus), v));
+            modelBuilder.Entity<TableSchema>().Property(p => p.SyncStatus)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (SyncStatus)Enum.Parse(typeof(SyncStatus), v));
         }
     }
 }

@@ -173,9 +173,9 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Data\AdoContext.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\20190216214458_NewInit.cs" />
-    <Compile Include="Migrations\20190216214458_NewInit.designer.cs">
-      <DependentUpon>20190216214458_NewInit.cs</DependentUpon>
+    <Compile Include="Migrations\20190217104509_NewInit.cs" />
+    <Compile Include="Migrations\20190217104509_NewInit.designer.cs">
+      <DependentUpon>20190217104509_NewInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\LocalTable.cs" />

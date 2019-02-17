@@ -34,7 +34,7 @@ SELECT Id, Name, SyncStatus, IsDeleted, LastModified, ProjectId FROM {TableName}
                     var projectTable = new ProjectTable(
                         reader[0] as string,
                         reader[1] as string,
-                        reader[2] as bool? ?? false,
+                        reader[2] as SyncStatus? ?? SyncStatus.NotRegistered,
                         reader[3] as bool? ?? false,
                         reader[4] as DateTime?,
                         reader[5] as string);

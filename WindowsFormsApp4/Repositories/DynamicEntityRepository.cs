@@ -23,7 +23,7 @@ namespace WindowsFormsApp4.Repositories
 
         public void Add(DynamicEntity dynamicEntity)
         {
-            dynamicEntity.SyncStatus = false;
+            dynamicEntity.SyncStatus = SyncStatus.NotSynchronized;
             _efContext.DynamicEntities.Add(dynamicEntity);
 
             _efContext.SaveChanges();
@@ -45,7 +45,7 @@ namespace WindowsFormsApp4.Repositories
             if (dynamicEntity != null)
             {
                 dynamicEntity.IsDeleted = true;
-                dynamicEntity.SyncStatus = false;
+                dynamicEntity.SyncStatus = SyncStatus.NotSynchronized;
             }
 
             _efContext.SaveChanges();

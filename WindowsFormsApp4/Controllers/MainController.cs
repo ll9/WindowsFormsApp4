@@ -44,7 +44,7 @@ namespace WindowsFormsApp4.Controllers
             if (SynchronisierenDialog != null && !SynchronisierenDialog.IsDisposed)
             {
                 var tables = _efContext.ProjectTables
-                    .Where(t => t.IsDeleted != true).ToList();
+                    .Where(t => t.SyncStatus == SyncStatus.NotRegistered).ToList();
 
                 SynchronisierenDialog.SetListBoxDataSource(tables);
             }

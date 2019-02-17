@@ -15,7 +15,7 @@ namespace WindowsFormsApp4.Migrations
                     StringCol1 = table.Column<string>(nullable: true),
                     StringCol2 = table.Column<string>(nullable: true),
                     IntCol1 = table.Column<int>(nullable: true),
-                    SyncStatus = table.Column<bool>(nullable: false),
+                    SyncStatus = table.Column<string>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     LastModified = table.Column<DateTime>(nullable: true),
                     ProjectTableId = table.Column<string>(nullable: true)
@@ -43,7 +43,7 @@ namespace WindowsFormsApp4.Migrations
                 {
                     Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     Name = table.Column<string>(nullable: true),
-                    SyncStatus = table.Column<bool>(nullable: false),
+                    SyncStatus = table.Column<string>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     LastModified = table.Column<DateTime>(nullable: true)
                 },
@@ -58,7 +58,7 @@ namespace WindowsFormsApp4.Migrations
                 {
                     Id = table.Column<string>(nullable: false, defaultValueSql: "HEX(RANDOMBLOB(16))"),
                     Name = table.Column<string>(nullable: true),
-                    SyncStatus = table.Column<bool>(nullable: false),
+                    SyncStatus = table.Column<string>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     LastModified = table.Column<DateTime>(nullable: true),
                     ProjectId = table.Column<string>(nullable: true)
@@ -80,7 +80,7 @@ namespace WindowsFormsApp4.Migrations
                     DisplayName = table.Column<string>(nullable: true),
                     DisplayIndex = table.Column<int>(nullable: true),
                     PhysicalColumnName = table.Column<string>(nullable: true),
-                    SyncStatus = table.Column<bool>(nullable: false),
+                    SyncStatus = table.Column<string>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     LastModified = table.Column<DateTime>(nullable: true),
                     ProjectTableId = table.Column<string>(nullable: true)

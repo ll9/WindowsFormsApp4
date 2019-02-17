@@ -43,7 +43,7 @@ namespace WindowsFormsApp4.Repositories
             if (tableSchema != null)
             {
                 tableSchema.IsDeleted = true;
-                tableSchema.SyncStatus = false;
+                tableSchema.SyncStatus = SyncStatus.NotSynchronized;
 
                 foreach (var entity in _efContext.DynamicEntities.Where(d => d.ProjectTableId == tableSchema.ProjectTableId))
                 {

@@ -9,7 +9,7 @@ using WindowsFormsApp4.Data;
 namespace WindowsFormsApp4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216214458_NewInit")]
+    [Migration("20190217104509_NewInit")]
     partial class NewInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("StringCol2");
 
-                    b.Property<bool>("SyncStatus");
+                    b.Property<string>("SyncStatus")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -67,7 +68,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<bool>("SyncStatus");
+                    b.Property<string>("SyncStatus")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -88,7 +90,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("ProjectId");
 
-                    b.Property<bool>("SyncStatus");
+                    b.Property<string>("SyncStatus")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -121,7 +124,8 @@ namespace WindowsFormsApp4.Migrations
 
                     b.Property<string>("ProjectTableId");
 
-                    b.Property<bool>("SyncStatus");
+                    b.Property<string>("SyncStatus")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
