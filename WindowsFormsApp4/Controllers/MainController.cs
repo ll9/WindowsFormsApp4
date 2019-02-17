@@ -67,7 +67,8 @@ namespace WindowsFormsApp4.Controllers
                     var schemas = _efContext.TableSchemas
                         .Where(s => s.ProjectTableId == _efContext.ProjectTables.Single(p => p.Name == table.Name).Id);
                     var columnSchema = schemas.SingleOrDefault(s => s.PhysicalColumnName == column.ColumnName);
-                    if (columnSchema != null)
+                    if (new string[] { "Id", "SyncStatus", "IsDeleted", "LastModified" }.Contains(column.ColumnName)) { }
+                    else if (columnSchema != null)
                     {
                         column.ColumnName = columnSchema.ColumnName;
                     }
