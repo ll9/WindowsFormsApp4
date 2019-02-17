@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp4.Data;
+using WindowsFormsApp4.Models;
 using WindowsFormsApp4.ViewModels;
 
 namespace WindowsFormsApp4.Repositories
@@ -60,14 +61,18 @@ namespace WindowsFormsApp4.Repositories
 
         public DataTable ListNotSynchronized(string tableName)
         {
-            var query = $"SELECT * from {tableName}";
+            var query = $"SELECT * from {tableName} WHERE SyncStatus = @SyncStatus";
 
             using (var connection = _context.GetConnection())
-            using (var adapter = new SQLiteDataAdapter(query, connection))
+            using (var command = new SQLiteCommand(query, connection))
             {
-                var table = new DataTable(tableName);
-                adapter.Fill(table);
-                return table;
+                command.Parameters.AddWithValue("@SyncStatus", SyncStatus.NotSynchronized.ToString());
+                using (var adapter = new SQLiteDataAdapter(command))
+                {
+                    var table = new DataTable(tableName);
+                    adapter.Fill(table);
+                    return table;
+                }
             }
         }
 

@@ -112,7 +112,7 @@ VALUES(
                     command.Parameters.AddWithValue("@DisplayName", name);
                     command.Parameters.AddWithValue("@DisplayIndex", null);
                     command.Parameters.AddWithValue("@PhysicalColumnName", name);
-                    command.Parameters.AddWithValue("@SyncStatus", false);
+                    command.Parameters.AddWithValue("@SyncStatus", SyncStatus.NotSynchronized.ToString());
                     command.Parameters.AddWithValue("@IsDeleted", false);
                     command.Parameters.AddWithValue("@LastModified", null);
                     command.Parameters.AddWithValue("@ProjectTableId", projectTableId);

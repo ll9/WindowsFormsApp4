@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp4.Controllers;
 using WindowsFormsApp4.Data;
+using WindowsFormsApp4.Models;
 using WindowsFormsApp4.Views;
 
 namespace WindowsFormsApp4
@@ -55,6 +56,13 @@ namespace WindowsFormsApp4
                 if (e.Row.DataGridView.Columns["Id"].ValueType == typeof(string))
                 {
                     e.Row.Cells["Id"].Value = Guid.NewGuid().ToString();
+                }
+            }
+            if (e.Row.DataGridView.Columns.Contains("SyncStatus"))
+            {
+                if (e.Row.DataGridView.Columns["SyncStatus"].ValueType == typeof(string))
+                {
+                    e.Row.Cells["SyncStatus"].Value = SyncStatus.NotSynchronized.ToString();
                 }
             }
         }

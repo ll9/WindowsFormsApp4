@@ -21,6 +21,7 @@ namespace WindowsFormsApp4.Controllers
         private readonly AdoContext _adoContext;
         private readonly DbTableRepository _dbTableRepository;
         private readonly ProjectRepository _projectRepository;
+        private readonly ProjectTableRepository _projectTableRepository;
 
         public SynchronisierenDialog SynchronisierenDialog { get; set; }
 
@@ -35,6 +36,7 @@ namespace WindowsFormsApp4.Controllers
             _adoContext = new AdoContext(builder.ConnectionString);
             _dbTableRepository = new DbTableRepository(_adoContext);
             _projectRepository = new ProjectRepository(_adoContext);
+            _projectTableRepository = new ProjectTableRepository(_adoContext);
 
             Initialize();
         }
@@ -56,15 +58,33 @@ namespace WindowsFormsApp4.Controllers
                 .Where(t => t.SyncStatus == SyncStatus.NotSynchronized)
                 .ToList();
             // Step 4
-            //var dyn = _dbTableRepository.List()
+            var dynamicEntities = new DataTable();
+            foreach (var table in _efContext.ProjectTables.Where(t => t.SyncStatus != SyncStatus.NotRegistered))
+            {
+                var dataTable = _dbTableRepository.ListNotSynchronized(table.Name);
+                foreach (DataColumn column in dataTable.Columns.Cast<DataColumn>().ToList())
+                {
+                    var schemas = _efContext.TableSchemas
+                        .Where(s => s.ProjectTableId == _efContext.ProjectTables.Single(p => p.Name == table.Name).Id);
+                    var columnSchema = schemas.SingleOrDefault(s => s.PhysicalColumnName == column.ColumnName);
+                    if (columnSchema != null)
+                    {
+                        column.ColumnName = columnSchema.ColumnName;
+                    }
+                    else
+                    {
+                        dataTable.Columns.Remove(column);
+                    }
+                }
+                dynamicEntities.Merge(dataTable);
+            }
         }
 
         internal void LoadSynchronizationTables()
         {
             if (SynchronisierenDialog != null && !SynchronisierenDialog.IsDisposed)
             {
-                var tables = _efContext.ProjectTables
-                    .Where(t => t.SyncStatus == SyncStatus.NotRegistered).ToList();
+                var tables = _efContext.ProjectTables.ToList();
 
                 SynchronisierenDialog.SetListBoxDataSource(tables);
             }
@@ -87,7 +107,7 @@ namespace WindowsFormsApp4.Controllers
 
             _dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
             _efContext.LocalTables.Add(new LocalTable(addTableViewModel.Name));
-            _efContext.ProjectTables.Add(new ProjectTable(addTableViewModel.Name, _projectRepository.GetLocalProjectId()));
+            _projectTableRepository.Add(new ProjectTable(addTableViewModel.Name, _projectRepository.GetLocalProjectId()));
 
             _efContext.SaveChanges();
             AddTable(addTableViewModel.Name);
@@ -109,7 +129,7 @@ namespace WindowsFormsApp4.Controllers
 
             if (e.Row.Table.Columns.Contains("SyncStatus"))
             {
-                e.Row.SetField("SyncStatus", false);
+                e.Row.SetField("SyncStatus", SyncStatus.NotSynchronized.ToString());
             }
 
             e.Row.Table.RowChanged += Table_RowChanged;
@@ -124,7 +144,7 @@ namespace WindowsFormsApp4.Controllers
             }
             if (e.Row.Table.Columns.Contains("SyncStatus"))
             {
-                e.Row.SetField("SyncStatus", false);
+                e.Row.SetField("SyncStatus", SyncStatus.NotSynchronized.ToString());
             }
         }
 
