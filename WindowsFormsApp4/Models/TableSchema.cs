@@ -27,5 +27,11 @@ namespace WindowsFormsApp4.Models
 
         [ForeignKey(nameof(ProjectTable))]
         public string ProjectTableId { get; set; }
+
+        public Type GetPropertyType()
+        {
+            var type = DynamicEntity.GetPropertyInfos().Single(p => p.Name.Equals(ColumnName)).PropertyType;
+            return type;
+        }
     }
 }
