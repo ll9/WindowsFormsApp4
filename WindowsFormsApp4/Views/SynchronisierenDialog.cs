@@ -15,6 +15,7 @@ namespace WindowsFormsApp4.Views
     public partial class SynchronisierenDialog : Form
     {
         private readonly MainController _mainController;
+        private ICollection<ProjectTable> _dataSource;
 
         public SynchronisierenDialog(MainController mainController)
         {
@@ -33,7 +34,13 @@ namespace WindowsFormsApp4.Views
 
         public void SetListBoxDataSource(ICollection<ProjectTable> source)
         {
-            listBox1.DataSource = source;
+            _dataSource = source;
+            listBox1.DataSource = _dataSource;
+        }
+
+        private void SynchronizeButton_Click(object sender, EventArgs e)
+        {
+            _mainController.Synchronize(_dataSource);
         }
     }
 }

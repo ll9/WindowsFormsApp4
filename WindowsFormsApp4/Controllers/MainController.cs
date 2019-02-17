@@ -39,6 +39,26 @@ namespace WindowsFormsApp4.Controllers
             Initialize();
         }
 
+        internal void Synchronize(ICollection<ProjectTable> dataSource)
+        {
+            dataSource
+                .Where(t => t.SyncStatus == SyncStatus.NotRegistered)
+                .ToList()
+                .ForEach(t => t.SyncStatus = SyncStatus.NotSynchronized);
+            _efContext.SaveChanges();
+
+            // Step 1
+            var project = _efContext.Projects.Single();
+            // Step 2
+            var tables = _efContext.ProjectTables.Where(t => t.SyncStatus == SyncStatus.NotSynchronized).ToList();
+            // Step 3
+            var tableSchemas = _efContext.TableSchemas
+                .Where(t => t.SyncStatus == SyncStatus.NotSynchronized)
+                .ToList();
+            // Step 4
+            //var dyn = _dbTableRepository.List()
+        }
+
         internal void LoadSynchronizationTables()
         {
             if (SynchronisierenDialog != null && !SynchronisierenDialog.IsDisposed)
@@ -67,6 +87,7 @@ namespace WindowsFormsApp4.Controllers
 
             _dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
             _efContext.LocalTables.Add(new LocalTable(addTableViewModel.Name));
+            _efContext.ProjectTables.Add(new ProjectTable(addTableViewModel.Name, _projectRepository.GetLocalProjectId()));
 
             _efContext.SaveChanges();
             AddTable(addTableViewModel.Name);

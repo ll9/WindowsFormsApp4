@@ -15,7 +15,7 @@ namespace WindowsFormsApp4.Repositories
         private readonly AdoContext _context;
         private string[] _defaultColumns = new[] {
             "Id TEXT DEFAULT (HEX(RANDOMBLOB(16))) PRIMARY KEY",
-            "SyncStatus BOOLEAN",
+            "SyncStatus TEXT",
             "IsDeleted BOOLEAN",
             "LastModified",
         };
@@ -46,6 +46,19 @@ namespace WindowsFormsApp4.Repositories
 
 
         public DataTable List(string tableName)
+        {
+            var query = $"SELECT * from {tableName}";
+
+            using (var connection = _context.GetConnection())
+            using (var adapter = new SQLiteDataAdapter(query, connection))
+            {
+                var table = new DataTable(tableName);
+                adapter.Fill(table);
+                return table;
+            }
+        }
+
+        public DataTable ListNotSynchronized(string tableName)
         {
             var query = $"SELECT * from {tableName}";
 

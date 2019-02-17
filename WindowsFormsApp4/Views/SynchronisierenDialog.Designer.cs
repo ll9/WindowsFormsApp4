@@ -49,6 +49,7 @@
             this.SynchronizeButton.TabIndex = 1;
             this.SynchronizeButton.Text = "Synchronisieren";
             this.SynchronizeButton.UseVisualStyleBackColor = true;
+            this.SynchronizeButton.Click += new System.EventHandler(this.SynchronizeButton_Click);
             // 
             // CancelButton
             // 
