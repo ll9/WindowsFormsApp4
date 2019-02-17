@@ -75,5 +75,10 @@ namespace WindowsFormsApp4
                 }
             }
         }
+
+        private void Synchronisieren_Click(object sender, EventArgs e)
+        {
+            new SynchronisierenDialog(_controller).ShowDialog();
+        }
     }
 }

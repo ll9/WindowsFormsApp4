@@ -70,6 +70,7 @@
             this.Synchronisieren.TabIndex = 3;
             this.Synchronisieren.Text = "Synchronisieren";
             this.Synchronisieren.UseVisualStyleBackColor = true;
+            this.Synchronisieren.Click += new System.EventHandler(this.Synchronisieren_Click);
             // 
             // MainView
             // 

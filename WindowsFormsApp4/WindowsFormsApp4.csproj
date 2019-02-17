@@ -204,6 +204,12 @@
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\ProjectTableRepository.cs" />
     <Compile Include="Repositories\TableSchemaRepository.cs" />
+    <Compile Include="Views\SynchronisierenDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SynchronisierenDialog.Designer.cs">
+      <DependentUpon>SynchronisierenDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AddTableDialog.resx">
       <DependentUpon>AddTableDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +225,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\SynchronisierenDialog.resx">
+      <DependentUpon>SynchronisierenDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\WindowsFormsApp4.ViewModels.AddTableViewModel.datasource" />
     <None Include="Properties\DataSources\WindowsFormsApp4.ViewModels.ColumnViewModel.datasource" />

@@ -10,16 +10,19 @@ using WindowsFormsApp4.Data;
 using WindowsFormsApp4.Models;
 using WindowsFormsApp4.Repositories;
 using WindowsFormsApp4.ViewModels;
+using WindowsFormsApp4.Views;
 
 namespace WindowsFormsApp4.Controllers
 {
-    class MainController
+    public class MainController
     {
         private readonly MainView _view;
         private readonly ApplicationDbContext _efContext;
         private readonly AdoContext _adoContext;
         private readonly DbTableRepository _dbTableRepository;
         private readonly ProjectRepository _projectRepository;
+
+        public SynchronisierenDialog SynchronisierenDialog { get; set; }
 
         public MainController(MainView view)
         {
@@ -34,6 +37,17 @@ namespace WindowsFormsApp4.Controllers
             _projectRepository = new ProjectRepository(_adoContext);
 
             Initialize();
+        }
+
+        internal void LoadSynchronizationTables()
+        {
+            if (SynchronisierenDialog != null && !SynchronisierenDialog.IsDisposed)
+            {
+                var tables = _efContext.ProjectTables
+                    .Where(t => t.IsDeleted != true).ToList();
+
+                SynchronisierenDialog.SetListBoxDataSource(tables);
+            }
         }
 
         private void Initialize()
