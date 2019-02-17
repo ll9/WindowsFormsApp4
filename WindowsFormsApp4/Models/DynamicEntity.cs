@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,17 +29,24 @@ namespace WindowsFormsApp4.Models
         [ForeignKey(nameof(ProjectTable))]
         public string ProjectTableId { get; set; }
 
-        public static IEnumerable<string> GetPropertNames()
+        public static IEnumerable<PropertyInfo> GetPropertyInfos()
         {
-            var propertyList = typeof(DynamicEntity).GetProperties()
-                .Select(p => p.Name)
-                .Where(name => (
-                    name != nameof(Id) &&
-                    name != nameof(SyncStatus) &&
-                    name != nameof(IsDeleted) &&
-                    name != nameof(LastModified) &&
-                    name != nameof(ProjectTableId)
+            var propertyInfos = typeof(DynamicEntity).GetProperties()
+                .Where(p => (
+                    p.Name != nameof(Id) &&
+                    p.Name != nameof(SyncStatus) &&
+                    p.Name != nameof(IsDeleted) &&
+                    p.Name != nameof(LastModified) &&
+                    p.Name != nameof(ProjectTableId)
                 ));
+
+            return propertyInfos;
+        }
+
+        public static IEnumerable<string> GetPropertyNames()
+        {
+            var propertyList = GetPropertyInfos()
+                .Select(p => p.Name);
 
             return propertyList;
         }

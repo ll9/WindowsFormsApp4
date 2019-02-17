@@ -102,7 +102,7 @@ VALUES(
 ";
             using (var connection = _context.GetConnection())
             using (var command = new SQLiteCommand(query, connection))
-                foreach (var name in DynamicEntity.GetPropertNames())
+                foreach (var name in DynamicEntity.GetPropertyNames())
                 {
                     command.Parameters.AddWithValue("@Id", Guid.NewGuid().ToString());
                     command.Parameters.AddWithValue("@ColumnName", name);
