@@ -30,7 +30,7 @@ namespace WindowsFormsApp4.Repositories
             var columnDefinitions = _defaultColumns
                 .Concat(
                     columnViewModels
-                    .Select(c => $"{c.Name} {c.SqlType}")
+                    .Select(c => $"{c.Name} {c.SqlType.SqlType}")
                 )
                 .Aggregate((current, next) => $"{current}, {next}");
 

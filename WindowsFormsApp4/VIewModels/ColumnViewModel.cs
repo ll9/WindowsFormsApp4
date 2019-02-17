@@ -8,12 +8,24 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp4.ViewModels
 {
+    class SqlCsharpType
+    {
+        public SqlCsharpType(string sqlType, Type csharpType)
+        {
+            SqlType = sqlType;
+            CsharpType = csharpType;
+        }
+
+        public string SqlType { get; set; }
+        public Type CsharpType { get; set; }
+    }
+
     class ColumnViewModel: INotifyPropertyChanged
     {
         private string _name;
         public string Name { get => _name; set => SetField(ref _name, value); }
-        private string _sqlType;
-        public string SqlType { get => _sqlType; set => SetField(ref _sqlType, value); }
+        private SqlCsharpType _sqlType;
+        public SqlCsharpType SqlType { get => _sqlType; set => SetField(ref _sqlType, value); }
 
         public bool IsValid { get => !string.IsNullOrEmpty(Name); }
 

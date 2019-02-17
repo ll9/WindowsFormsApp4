@@ -53,6 +53,7 @@ namespace WindowsFormsApp4.Controllers
 
             _dbTableRepository.Add(addTableViewModel.Name, addTableViewModel.ColumnViewModels);
             _efContext.LocalTables.Add(new LocalTable(addTableViewModel.Name));
+
             _efContext.SaveChanges();
             AddTable(addTableViewModel.Name);
         }

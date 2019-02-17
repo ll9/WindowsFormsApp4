@@ -21,9 +21,9 @@ namespace WindowsFormsApp4.Views
 
             var items = new[]
             {
-                new { Text = "Text", Value = "TEXT" },
-                new { Text = "Zahl", Value = "DOUBLE" },
-                new { Text = "Datum", Value = "DATETIME" },
+                new { Text = "Text", Value = new SqlCsharpType("TEXT", typeof(string)) },
+                new { Text = "Zahl", Value = new SqlCsharpType("DOUBLE", typeof(double?)) },
+                new { Text = "Datum", Value = new SqlCsharpType("DATETIME", typeof(DateTime?)) },
             };
             SqlCombobox.DataSource = items;
             SqlCombobox.DisplayMember = "Text";
@@ -34,7 +34,7 @@ namespace WindowsFormsApp4.Views
 
         private void columnViewModelsDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells[nameof(ColumnViewModel.SqlType)].Value = "TEXT";
+            e.Row.Cells[nameof(ColumnViewModel.SqlType)].Value = (SqlCombobox.DataSource as IEnumerable<dynamic>).First().Value;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
